@@ -28,3 +28,7 @@ jobs:
     - name: test show all 
       run: |
         set
+
+    - name: show github config
+      run: |
+        cat ${GITHUB_EVENT_PATH}

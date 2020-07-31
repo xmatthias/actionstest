@@ -2,10 +2,7 @@ name: Test CI
 
 on:
   push:
-    branches:
-    tags:
-    release:
-      types: 
+  release:
   pull_request:
 
 jobs:

@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-    tags:
-      - "*"
+  release:
+    types: [published]
   pull_request:
 
 jobs:
@@ -32,3 +32,14 @@ jobs:
     - name: show github config
       run: |
         cat ${GITHUB_EVENT_PATH}
+
+    - name: create_asset
+      run: echo "hello world" > hello_world.txt
+    
+    - uses: AButler/upload-release-assets@v2.0
+      if: github.event_name == 'release'
+      with:
+        files: 'hello_world.txt'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+  
+  

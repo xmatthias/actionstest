@@ -34,12 +34,18 @@ jobs:
         cat ${GITHUB_EVENT_PATH}
 
     - name: create_asset
-      run: echo "hello world" > hello_world.txt
+      run: echo "hello world" > hello_world.txt && echo "hello world2" > hello_world2.txt
     
-    - uses: AButler/upload-release-assets@v2.0
-      if: github.event_name == 'release'
+#     - uses: AButler/upload-release-assets@v2.0
+#       if: github.event_name == 'release'
+#       with:
+#         files: 'hello_world*.txt'
+#         repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload release binaries
+      uses: alexellis/upload-assets@0.2.2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        files: 'hello_world.txt'
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-  
+        asset_paths: '["hello_world*.txt"]'
   

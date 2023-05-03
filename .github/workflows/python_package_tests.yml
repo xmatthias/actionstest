@@ -33,4 +33,5 @@ jobs:
         python --version
         python -c 'import sysconfig;print(f"sysconfig: {sysconfig.get_platform()}")'
         python -c 'from pip._vendor.distlib.util import get_host_platform; print(f"pip gethost: {get_host_platform()}")'
-        
+        echo "---"
+        pip install catboost==1.2

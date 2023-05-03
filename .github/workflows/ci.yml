@@ -1,9 +1,9 @@
 name: Test CI
 
-# on:
-#   push:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master22
 #   release:
 #     types: [published]
 #   pull_request:

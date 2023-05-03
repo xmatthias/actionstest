@@ -1,12 +1,12 @@
 name: Test CI
 
-on:
-  push:
-    branches:
-      - master
-  release:
-    types: [published]
-  pull_request:
+# on:
+#   push:
+#     branches:
+#       - master
+#   release:
+#     types: [published]
+#   pull_request:
 
 jobs:
   build:

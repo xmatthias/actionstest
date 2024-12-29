@@ -15,8 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest ]
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        os: [ ubuntu-latest ]
+        python-version: ["3.10", "3.11", "3.12"]
 
     steps:
     - uses: actions/checkout@v3
@@ -28,12 +28,25 @@ jobs:
         check-latest: true
 
 
-    - name: Verify PIP
+    # - name: Verify PIP
+    #   run: |
+    #     pip install -U pip
+    #     echo "Python version"
+    #     python --version
+    #     python -c 'import sysconfig;print(f"sysconfig: {sysconfig.get_platform()}")'
+    #     python -c 'from pip._vendor.distlib.util import get_host_platform; print(f"pip gethost: {get_host_platform()}")'
+    #     echo "---"
+    #     pip install catboost==1.2
+
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        cache-suffix: "${{ matrix.python-version }}"
+
+    - name: "install torch"
       run: |
-        pip install -U pip
-        echo "Python version"
-        python --version
-        python -c 'import sysconfig;print(f"sysconfig: {sysconfig.get_platform()}")'
-        python -c 'from pip._vendor.distlib.util import get_host_platform; print(f"pip gethost: {get_host_platform()}")'
-        echo "---"
-        pip install catboost==1.2
+        uv venv
+        .venv\Scripts\activate
+        uv pip install torch
+

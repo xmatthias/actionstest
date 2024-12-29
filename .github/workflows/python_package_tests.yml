@@ -54,4 +54,5 @@ jobs:
     - name: "run cache ls"
       run: |
         ls -l ${UV_CACHE_DIR}
+        tree ${UV_CACHE_DIR}
 

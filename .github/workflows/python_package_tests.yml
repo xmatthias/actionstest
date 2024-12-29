@@ -51,3 +51,7 @@ jobs:
         . .venv/bin/activate
         uv pip install torch
 
+    - name: "run cache ls"
+      run: |
+        ls -l ${UV_CACHE_DIR}
+

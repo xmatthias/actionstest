@@ -47,6 +47,6 @@ jobs:
     - name: "install torch"
       run: |
         uv venv
-        .venv\Scripts\activate
+        . .venv/bin/activate
         uv pip install torch
 

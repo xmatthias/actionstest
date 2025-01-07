@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
- build_macos:
+ test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -42,13 +42,19 @@ jobs:
     - name: Install uv
       uses: astral-sh/setup-uv@v5
       with:
+        python-version: ${{ matrix.python-version }}
         cache-suffix: "${{ matrix.python-version }}"
         prune-cache: false
 
+    - name: "ls"
+      run: |
+        ls -l .
+        which python3
+
     - name: "install torch"
       run: |
-        uv venv
-        . .venv/bin/activate
+        # uv venv
+        # . .venv/bin/activate
         uv pip install torch
 
     - name: "run cache ls"

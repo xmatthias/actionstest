@@ -23,7 +23,7 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v4
-      if: "${{ matrix.python-version != '3.11' }}"
+      if: "${{ matrix.python-version != '3.12' }}"
       with:
         python-version: ${{ matrix.python-version }}
         check-latest: true
@@ -51,7 +51,7 @@ jobs:
       run: |
         ls -l .
         which python3
-        python3 -V
+        python3 -VV
         uv python list
 
     - name: "install torch"

@@ -44,8 +44,9 @@ jobs:
       uses: astral-sh/setup-uv@v5
       with:
         python-version: ${{ matrix.python-version }}
-        cache-suffix: "${{ matrix.python-version }}"
-        prune-cache: false
+        enable-cache: false
+        # cache-suffix: "${{ matrix.python-version }}"
+        # prune-cache: false
 
     - name: "ls"
       run: |
